@@ -2,274 +2,229 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Group 3 Task Map</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&family=Atkinson+Hyperlegible+Mono:wght@500;700&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpendGuard · PS5 · Ma Ma Lay</title>
 <style>
-:root{
-  --ground:#F4F5F7; --paper:#FFFFFF; --ink:#16202A; --ink-2:#4A5563; --rule:#DCE0E5;
-  --head:#1B2A4A; --eyebrow:#1E6A8A; --red:#C8323A; --q-ink:#3A2C63;
-  --pink-bg:#FBF4FA; --pink-bd:#DDBFDD; --blue-bg:#F0F6FA; --blue-bd:#B9D5E6;
-  --strip-bg:#F3F6F8; --hover:rgba(22,32,42,.06); --chip-ink:#FFFFFF;
-  --m-ak:#0F766E; --m-cch:#1E5A8A; --m-ikd:#A21CAF; --m-mml:#6D28D9;
-  --sans:"Atkinson Hyperlegible Next",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"Atkinson Hyperlegible Mono",ui-monospace,Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  color-scheme:dark; --ground:#11161C; --paper:#171E26; --ink:#E8ECF0; --ink-2:#A7B1BD; --rule:#2A3440;
-  --head:#E8ECF0; --eyebrow:#7CC4E4; --red:#F27A80; --q-ink:#D9CFF5;
-  --pink-bg:#231A26; --pink-bd:#4F3A52; --blue-bg:#16222D; --blue-bd:#2E4A5E;
-  --strip-bg:#1D252F; --hover:rgba(255,255,255,.07); --chip-ink:#0B0F14;
-  --m-ak:#5EEAD4; --m-cch:#9CCBF0; --m-ikd:#F0ABFC; --m-mml:#C4B5FD;}}
-:root[data-theme="dark"]{
-  color-scheme:dark; --ground:#11161C; --paper:#171E26; --ink:#E8ECF0; --ink-2:#A7B1BD; --rule:#2A3440;
-  --head:#E8ECF0; --eyebrow:#7CC4E4; --red:#F27A80; --q-ink:#D9CFF5;
-  --pink-bg:#231A26; --pink-bd:#4F3A52; --blue-bg:#16222D; --blue-bd:#2E4A5E;
-  --strip-bg:#1D252F; --hover:rgba(255,255,255,.07); --chip-ink:#0B0F14;
-  --m-ak:#5EEAD4; --m-cch:#9CCBF0; --m-ikd:#F0ABFC; --m-mml:#C4B5FD;}
-
-*{box-sizing:border-box}
-html{-webkit-font-smoothing:antialiased}
-body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 var(--sans);padding:28px 16px 64px}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2.5px solid var(--eyebrow);outline-offset:2px;border-radius:6px}
-.page{max-width:1240px;margin:0 auto}
-
-.eyebrow{font:800 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--eyebrow);margin:0}
-h1{font-size:clamp(24px,3.2vw,34px);font-weight:800;line-height:1.15;color:var(--head);margin:14px 0 8px;text-wrap:balance}
-.lede{color:var(--ink-2);margin:0 0 22px;max-width:75ch}
-
-.card{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--red);border-radius:6px;padding:18px clamp(14px,2.4vw,28px)}
-.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px 20px;margin-bottom:16px}
-.legend{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2);margin:0;padding:0;list-style:none}
-.legend li{display:inline-flex;align-items:center;gap:7px;font-weight:600}
-.dot{width:14px;height:14px;border-radius:50%;flex:none;background:var(--c)}
-.count{font:700 15px/1 var(--mono);font-variant-numeric:tabular-nums;color:var(--head)}
-
-.map{display:grid;grid-template-columns:minmax(120px,170px) 1fr 1fr;gap:12px}
-.colhead{text-align:center;font-weight:600;font-size:19px;color:var(--head);padding:2px 0}
-.rowhead{display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;color:var(--head);padding:0 8px;text-wrap:balance}
-.quad{border:1.5px solid;border-radius:8px;padding:14px 14px 16px;min-height:168px;display:flex;flex-direction:column;gap:8px}
-.quad.pink{background:var(--pink-bg);border-color:var(--pink-bd)}
-.quad.blue{background:var(--blue-bg);border-color:var(--blue-bd)}
-.quad h2{font-size:17.5px;font-weight:600;color:var(--q-ink);margin:0 2px}
-.tags{display:none}
-.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px 12px}
-.item{appearance:none;border:0;background:none;width:100%;display:flex;align-items:flex-start;gap:10px;text-align:left;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1.35}
-.item .dot{margin-top:2px}
-.item:hover{background:var(--hover)}
-.item[aria-current="true"]{background:var(--hover);box-shadow:inset 0 0 0 1.5px var(--c)}
-.item .who{font:700 12px/1 var(--mono);color:var(--c);margin-left:6px;white-space:nowrap}
-.item.new{animation:pop .35s cubic-bezier(.16,1,.3,1)}
-@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion: reduce){.item.new{animation:none}}
-
-.strip{margin-top:16px;border-left:4px solid var(--eyebrow);background:var(--strip-bg);padding:12px 16px;border-radius:0 6px 6px 0;min-height:52px}
-.strip .head{margin:0;font-size:17px}
-.strip .head .t{color:var(--red);font-weight:600}
-.strip .badge{font:700 12.5px/1 var(--mono);color:var(--chip-ink);background:var(--c);border-radius:4px;padding:3px 6px;margin-right:8px;vertical-align:2px}
-.strip dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:10px 0 0;font-size:15.5px}
-.strip dt{font-weight:700;color:var(--ink-2)}
-.strip dd{margin:0;max-width:95ch}
-.strip .idle{margin:0;color:var(--ink-2)}
-
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chip,.ctl{appearance:none;border-radius:4px;font:600 15.5px/1.2 var(--sans);padding:8px 12px;min-height:40px;cursor:pointer}
-.chip{border:0;background:var(--c);color:var(--chip-ink);box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
-.chip[aria-pressed="true"]::before{content:"✓ ";font-weight:800}
-.chip:hover{filter:brightness(1.08)}
-.ctl{border:1.5px solid var(--head);background:var(--head);color:var(--paper)}
-.ctl.ghost{background:transparent;color:var(--head)}
-.hint{margin:14px 0 0;padding:8px 14px;border-left:3px solid var(--eyebrow);background:var(--strip-bg);font-style:italic;font-size:14.5px;color:var(--ink-2)}
-
-@media (max-width:760px){
-  body{padding-top:20px}
-  .map{grid-template-columns:1fr}
-  .corner,.colhead,.rowhead{display:none}
-  .quad{min-height:0}
-  .tags{display:flex;gap:6px;flex-wrap:wrap}
-  .tags span{font:600 11.5px/1 var(--sans);padding:4px 8px;border-radius:999px;background:var(--paper);border:1px solid var(--rule);color:var(--ink-2)}
-  .items{grid-template-columns:1fr}
-  .strip dl{grid-template-columns:1fr;gap:2px}
-  .strip dd{margin-bottom:6px}
-}
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1d2433; --muted:#5b6475; --line:#e2e6ee;
+    --person:#7c3aed; --ai:#2563eb; --accent:#0f766e; --warn:#b45309; --bad:#b91c1c;
+    --q-tl:#fbf3fb; --q-tr:#f1f6fb; --q-bl:#f1f6fb; --q-br:#fbf3fb;
+    --me:#facc15;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1420; --card:#171d2b; --ink:#e7eaf2; --muted:#a3abbd; --line:#2a3245;
+      --q-tl:#21192b; --q-tr:#172233; --q-bl:#172233; --q-br:#21192b; --me:#eab308;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 16px 64px}
+  header{padding:8px 0 16px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:30px;line-height:1.2;margin:6px 0 8px}
+  h2{font-size:22px;margin:0 0 12px}
+  h3{font-size:17px;margin:20px 0 8px}
+  p{margin:0 0 12px}
+  .sub{color:var(--muted)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 20px}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;margin-right:6px}
+  .tag.build{background:#dcfce7;color:#166534}
+  .tag.analysis{background:#e0e7ff;color:#3730a3}
+  pre.card{white-space:pre-wrap;background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:14px;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 10px}
+  .note{font-size:14px;color:var(--muted);border-left:3px solid var(--warn);padding:4px 10px;margin:8px 0 0}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 12px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  .tablewrap{overflow-x:auto}
+  .ok{color:var(--accent);font-weight:600}
+  .miss{color:var(--bad);font-weight:600}
+  figure{margin:12px 0 16px}
+  figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:10px;display:block;background:var(--bg)}
+  figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  /* map */
+  .map{display:grid;grid-template-columns:120px 1fr 1fr;gap:10px;align-items:stretch;margin-top:8px}
+  .axis{font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+  .q{border:1px solid var(--line);border-radius:12px;padding:12px;min-height:150px}
+  .q h4{margin:0 0 8px;font-size:15px}
+  .q.tl{background:var(--q-tl)} .q.tr{background:var(--q-tr)} .q.bl{background:var(--q-bl)} .q.br{background:var(--q-br)}
+  .q ul{list-style:none;margin:0;padding:0}
+  .q li{font-size:14px;margin:4px 0}
+  .q li small{font-family:ui-monospace,Menlo,monospace;color:var(--muted);margin-left:4px}
+  .q li.me{background:var(--me);color:#1d2433;border-radius:8px;padding:6px 8px;font-weight:700}
+  .q li.me small{color:#1d2433}
+  .legend{font-size:13px;color:var(--muted);margin-top:8px}
+  ol.steps li, ul.plain li{margin-bottom:6px}
+  footer{font-size:13px;color:var(--muted);text-align:center;margin-top:24px}
+  @media (max-width:760px){
+    h1{font-size:24px}
+    .grid2{grid-template-columns:1fr}
+    .map{grid-template-columns:1fr}
+    .axis.corner{display:none}
+    .axis.row{justify-content:flex-start}
+  }
 </style>
 </head>
 <body>
-<main class="page">
-  <p class="eyebrow">Place a task · Group 3</p>
-  <h1>Where would you place each of these tasks, and who should lead it?</h1>
-  <p class="lede">Call the quadrant before you click. Each task was written by one member.</p>
+<div class="wrap">
 
-  <section class="card" aria-label="Task map">
-    <div class="top">
-      <ul class="legend" aria-label="Members">
-        <li style="--c:var(--m-ak)"><span class="dot"></span>AK</li>
-        <li style="--c:var(--m-cch)"><span class="dot"></span>CCH</li>
-        <li style="--c:var(--m-ikd)"><span class="dot"></span>IKD</li>
-        <li style="--c:var(--m-mml)"><span class="dot"></span>MML</li>
+<header>
+  <div class="kicker">MGMT 6110 · Human-AI Collaboration · Problem Set 5 · Group 3</div>
+  <h1>SpendGuard: my receipt-logging agent on the map</h1>
+  <p class="sub">Ma Ma Lay (MML) · Built on Zapier’s free plan · Forked from my group’s page <a href="https://group3-week7-map.vercel.app/">group3-week7-map</a></p>
+</header>
+
+<!-- ============ STEP 1 ============ -->
+<section id="card">
+  <span class="tag build">Build · Step 1</span>
+  <h2>My agent card</h2>
+  <p>I wrote this card before the first run.</p>
+<pre class="card">My agent card | SpendGuard | finished 19 Oct 2026, 2:10 AM
+1. The job: Logs every receipt email into one Google Sheet, so that I (a person managing my own monthly budget) can see all my spending in one place and stop overspending
+2. The trigger: A new Gmail email matching the search subject:(receipt OR "payment confirmation")
+3. The tools: Gmail (New Email Matching Search, read only) and Google Sheets (Create Spreadsheet Row in my "Receipts 2026" sheet)
+4. It must never: Send, reply to or delete any email. The Zap has only a read trigger and a "create row" action, with no Gmail send step
+5. Where a person checks: I read the sheet every Sunday evening and compare each row with my bank app</pre>
+  <p class="note">Update, 19 Oct 2026, about 3:25 AM: after my tricky case (Step 2), I changed line 2’s search to <code>subject:(receipt OR invoice OR "payment confirmation")</code>. The rest of the card is unchanged.</p>
+
+  <h3>How I built it</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Part</th><th>Setting</th></tr>
+    <tr><td>Trigger</td><td>Gmail · <b>New Email Matching Search</b> on my personal Gmail account (not my SMU account)</td></tr>
+    <tr><td>Action</td><td>Google Sheets · <b>Create Spreadsheet Row</b> in “Receipts 2026”, Sheet1</td></tr>
+    <tr><td>Columns</td><td>Date ← Gmail Date · From ← From Email · Subject ← Subject · Snippet ← Raw Snippet</td></tr>
+    <tr><td>Plan</td><td>One trigger, one action, free apps only, no card added. Every test email was sent to myself.</td></tr>
+  </table></div>
+</section>
+
+<!-- ============ STEP 2 ============ -->
+<section id="runs">
+  <span class="tag build">Build · Step 2</span>
+  <h2>Runs, checked against Zap history</h2>
+  <p>I checked every row in my sheet against its run in Zap history and against the exported JSON. All six runs were <b>Successful</b>.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Zap history run (SGT)</th><th>Email</th><th>Search</th><th>Sheet row</th><th>Matches?</th></tr>
+    <tr><td>19 Oct, 2:46:33 AM</td><td>Receipt - Grab Ride · SGD 12.40</td><td>v1</td><td>3</td><td class="ok">Yes</td></tr>
+    <tr><td>19 Oct, 2:48:48 AM</td><td>Receipt - Shopee Order · SGD 23.90</td><td>v1</td><td>4</td><td class="ok">Yes</td></tr>
+    <tr><td>19 Oct, 3:08:39 AM</td><td>Payment Confirmation - Netflix · SGD 17.98</td><td>v1</td><td>5</td><td class="ok">Yes</td></tr>
+    <tr><td>19 Oct, 3:29:31 AM</td><td>Invoice - Starbucks · SGD 7.20 (Gmail <b>draft</b>)</td><td>v2</td><td>6</td><td class="miss">Duplicate</td></tr>
+    <tr><td>19 Oct, 3:31:27 AM</td><td>Invoice - Starbucks · SGD 7.20 (sent)</td><td>v2</td><td>7</td><td class="ok">Yes</td></tr>
+    <tr><td>19 Oct, 2:53:36 PM</td><td>Your Grab E-Receipt · S$ 14.90 (a real GrabFood order)</td><td>v2</td><td>8</td><td class="miss">Time shown in UTC</td></tr>
+  </table></div>
+  <p class="sub" style="font-size:14px">Row 2 is the test record from the Zap editor, so it has no Zap history run.</p>
+
+  <figure>
+    <img src="run-history.png" alt="Zap history showing six successful SpendGuard runs">
+    <figcaption>Zap history: six successful SpendGuard runs.</figcaption>
+  </figure>
+  <figure>
+    <img src="sheet.png" alt="Receipts 2026 Google Sheet with rows 2 to 8">
+    <figcaption>My “Receipts 2026” sheet. I covered my email address and the personal details in the real Grab receipt.</figcaption>
+  </figure>
+
+  <h3>My tricky case</h3>
+  <p><b>What I expected, written before I sent it:</b> an email with the subject “Invoice - Starbucks” is a real receipt, but it says “invoice” instead of “receipt”. I expected SpendGuard to <b>miss</b> it: no new row and no new run.</p>
+  <p><b>What happened:</b> I sent it at 3:13 AM. After more than five minutes there was no new row and no new run, so my expectation was right.</p>
+
+  <h3>My fix, tested again</h3>
+  <p>I changed the search to <code>subject:(receipt OR invoice OR "payment confirmation")</code>, re-tested the trigger and published the Zap again. Then I sent a new “Invoice - Starbucks” email at 3:30 AM, and SpendGuard logged it (row 7). The exported JSON shows the search changing from v1 to v2 between run 3 and run 4. The 3:13 AM email stayed missed, because Zapier only treats emails that arrive after publishing as new.</p>
+  <div class="grid2">
+    <figure>
+      <img src="tricky-before.png" alt="Sheet before the fix, with no Starbucks row">
+      <figcaption>Before the fix: the 3:13 AM invoice was missed.</figcaption>
+    </figure>
+    <figure>
+      <img src="tricky-after.png" alt="Sheet after the fix, with the Starbucks invoice logged">
+      <figcaption>After the fix: the new invoice was logged.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ STEP 3: MAP ============ -->
+<section id="map">
+  <span class="tag analysis">Analysis · Step 3</span>
+  <h2>SpendGuard on our two-by-two map</h2>
+  <p>This is my copy of Group 3’s map. My agent is highlighted in yellow; the other tasks are my group’s placements from class.</p>
+
+  <div class="map" role="table" aria-label="Map of Human-AI Collaboration">
+    <div class="axis corner"></div>
+    <div class="axis">Work with a right answer</div>
+    <div class="axis">Work with no single right answer</div>
+
+    <div class="axis row">Work that people and AI must do together</div>
+    <div class="q tl">
+      <h4>A person leads, AI inside</h4>
+      <ul><li>Healthcare · Draft clinical notes <small>IKD</small></li></ul>
+    </div>
+    <div class="q tr">
+      <h4>Agents run it, a person judges</h4>
+      <ul>
+        <li>Careers · Tailor and send job applications <small>AK</small></li>
+        <li>HR · Shortlist 500 graduate applicants <small>IKD</small></li>
+        <li>Consulting · Size a market <small>MML</small></li>
       </ul>
-      <span class="count" id="count" aria-live="polite">0 of 7 placed</span>
     </div>
 
-    <div class="map">
-      <div class="corner"></div>
-      <div class="colhead">Work with a right answer</div>
-      <div class="colhead">Work with no single right answer</div>
-
-      <div class="rowhead">Work that people and AI must do together</div>
-      <div class="quad pink" data-q="lead">
-        <div class="tags"><span>Must do together</span><span>Right answer</span></div>
-        <h2>A person leads, AI inside</h2><ul class="items"></ul>
-      </div>
-      <div class="quad blue" data-q="agents">
-        <div class="tags"><span>Must do together</span><span>No single right answer</span></div>
-        <h2>Agents run it, a person judges</h2><ul class="items"></ul>
-      </div>
-
-      <div class="rowhead">Work that either of them can do alone</div>
-      <div class="quad blue" data-q="alone">
-        <div class="tags"><span>Either can do alone</span><span>Right answer</span></div>
-        <h2>AI alone, with checks</h2><ul class="items"></ul>
-      </div>
-      <div class="quad pink" data-q="decide">
-        <div class="tags"><span>Either can do alone</span><span>No single right answer</span></div>
-        <h2>A person decides, AI alongside</h2><ul class="items"></ul>
-      </div>
+    <div class="axis row">Work that either of them can do alone</div>
+    <div class="q bl">
+      <h4>AI alone, with checks</h4>
+      <ul>
+        <li class="me">Personal finance · SpendGuard: log receipt emails <small>MML · PS5</small></li>
+        <li>Marketing · Sort post comments <small>CCH</small></li>
+      </ul>
     </div>
-
-    <div class="strip" id="strip" aria-live="polite"></div>
-
-    <div class="chips" id="chips">
-      <button type="button" class="ctl" id="showAll">Show all</button>
-      <button type="button" class="ctl ghost" id="clear">Clear</button>
+    <div class="q br">
+      <h4>A person decides, AI alongside</h4>
+      <ul>
+        <li>Finance · Pre-market brief <small>AK</small></li>
+        <li>Marketing · Pick next year’s campaign idea <small>CCH</small></li>
+      </ul>
     </div>
-    <p class="hint">Click a task card to place it, or Show all. Tasks are each member’s own; the placements are for discussion.</p>
-  </section>
-</main>
+  </div>
+  <p class="legend">In Q1 (d) I argue that “Sort post comments” belongs in <b>Agents run it, a person judges</b>.</p>
+</section>
 
-<script>
-const QUADS = {
-  lead:   "A person leads, AI inside",
-  agents: "Agents run it, a person judges",
-  alone:  "AI alone, with checks",
-  decide: "A person decides, AI alongside"
-};
+<!-- ============ Q1 ============ -->
+<section id="q1">
+  <span class="tag analysis">Analysis · Step 3</span>
+  <h2>Q1. Where does SpendGuard sit, and what does that mean for the person in the loop?</h2>
 
-// Trigger, action and oversight are each member's words, verbatim.
-const TASKS = [
-  { member: "AK", tag: "Careers", short: "Tailor and send job applications", quadrant: "agents",
-    industry: "Human Resources / Personal Career Development",
-    trigger: "A new job or internship opportunity matching my qualifications, skills, and career interests becomes available.",
-    action: "AI agents search for relevant job openings, analyze job descriptions, tailor my CV and cover letter to each position, and submit applications to suitable employers. The agents also track application statuses, deadlines, and interview invitations.",
-    oversight: "I review and approve the tailored CV, cover letter, and job applications before submission, ensuring all information is accurate and relevant." },
-  { member: "AK", tag: "Finance", short: "Pre-market brief", quadrant: "decide",
-    industry: "Finance & Investment (Stock Market)",
-    trigger: "Every day, before the US stock market opens.",
-    action: "AI agents collect and analyze the latest financial news, economic indicators, company earnings, and market trends. They assess overall market sentiment and classify the market as Bullish, Bearish, or Neutral, providing key reasons and supporting evidence. The agents also identify potential investment opportunities, major risks, and stocks to watch.",
-    oversight: "The investor reviews the AI-generated market analysis, verifies key signals, evaluates potential risks, and makes the final investment decisions." },
-  { member: "CCH", tag: "Marketing", short: "Sort post comments", quadrant: "alone",
-    industry: "Marketing",
-    trigger: "Customers left comments under the post",
-    action: "Analyze the comments to determine whether they are positive, negative, or problematic, and then categorize and organize them.",
-    oversight: "" },
-  { member: "CCH", tag: "Marketing", short: "Pick next year’s campaign idea", quadrant: "decide",
-    industry: "Marketing",
-    trigger: "The brand manager starts planning next year’s main campaign.",
-    action: "AI brainstorms several creative concepts and explains how each fits the brand. The brand manager chooses the big idea and may combine or change the concepts.",
-    oversight: "" },
-  { member: "IKD", tag: "HR", short: "Shortlist 500 graduate applicants", quadrant: "agents",
-    industry: "Human Resources",
-    trigger: "500 applications arrive for a graduate program",
-    action: "AI agents screen the CVs against the job criteria, summarize each candidate’s strengths, and produce a ranked shortlist of 30 with reasons. The HR manager reviews the shortlist, checks for bias, and decides who to interview.",
-    oversight: "" },
-  { member: "IKD", tag: "Healthcare", short: "Draft clinical notes", quadrant: "lead",
-    industry: "Healthcare",
-    trigger: "A doctor finishes a patient consultation",
-    action: "AI listens to the consultation and drafts the clinical notes and prescription details. The doctor reviews, corrects and signs before anything goes into the patient record.",
-    oversight: "" },
-  { member: "MML", tag: "Consulting", short: "Size a market", quadrant: "agents",
-    industry: "Consulting",
-    trigger: "A client brief asks whether a market is worth entering",
-    action: "Builds top-down and bottom-up estimates, pulls sources and runs scenarios.",
-    oversight: "" }
-];
+  <h3>(a) My quadrant</h3>
+  <p>SpendGuard sits in <b>AI alone, with checks</b> (bottom left).</p>
 
-const color = m => `var(--m-${m.toLowerCase()})`;
-const label = t => `${t.tag} · ${t.short}`;
-const $ = s => document.querySelector(s);
-const el = (tag, props = {}, ...kids) => {
-  const n = Object.assign(document.createElement(tag), props);
-  kids.forEach(k => n.append(k));
-  return n;
-};
+  <h3>(b) The two questions</h3>
+  <p><b>Is there a right answer?</b> Yes. Each email either is a receipt or is not, and each logged row either matches the email or does not, so every output can be checked. In my runs, I could check every row against the original email and its Zap history record, for example Grab Ride SGD 12.40 (row 3), Shopee SGD 23.90 (row 4) and Netflix SGD 17.98 (row 5).</p>
+  <p><b>Must people and AI do it together, or can either do it alone?</b> Either can do it alone. SpendGuard ran six times without any input from me, including a real GrabFood e-receipt that it logged at 2:53 PM while I was busy. I could also copy receipts into a sheet by hand; it would just take longer. No step in the process needs a human judgement.</p>
 
-const placed = new Set();
-const chips = [];
-const strip = $("#strip");
-const IDLE = "Click a task card to place it, or Show all.";
+  <h3>(c) The person in the loop</h3>
+  <p>I stay at the gate once a week: every Sunday evening I compare the sheet with my bank app. My runs showed me exactly what to check. First, <b>missed receipts</b>: a misspelled subject (“Pyament Confirmation”) and an “Invoice” email were both skipped before my fix. Second, <b>duplicates</b>: Gmail auto-saved my new Starbucks email as a draft at 3:29 AM, SpendGuard logged the draft, then logged the sent email again at 3:30 AM, so one coffee was counted twice. Third, <b>wrong times</b>: the real Grab receipt was logged as 6:53 (UTC) instead of 2:53 PM Singapore time.</p>
+  <p>SpendGuard may read matching emails and add rows on its own, but it cannot send, reply to or delete email, because the Zap has no such step. It would move to <b>A person decides, AI alongside</b> if I asked it to judge where I should cut my spending, because that has no single right answer. It would move to <b>A person leads, AI inside</b> if it could pay bills, because then I would have to sign off each payment before it goes out.</p>
 
-function idle(text = IDLE) {
-  strip.replaceChildren(el("p", { className: "idle", textContent: text }));
-}
+  <h3>(d) My group’s view</h3>
+  <p>I agree with most of my group’s placements, including my own task, <i>Consulting · Size a market</i>, in <b>Agents run it, a person judges</b>, which matches the Week 7 deck. I would answer one question differently for CCH’s <i>Marketing · Sort post comments</i>, which we placed in <b>AI alone, with checks</b>. On “Is there a right answer?”, I would now say no. Building SpendGuard showed me what a real right answer looks like: an email either is a receipt or is not, and I could check every row against Zap history. A post comment is different. Whether a comment is a complaint, a joke or a sales lead often depends on tone and context, so two careful people could sort the same comment differently. That puts the task in <b>Agents run it, a person judges</b>: agents can sort the comments at scale, but a marketer should judge the unclear ones before the team acts on them. This is also where the Week 7 deck placed <i>Product · Sort user comments</i>.</p>
+</section>
 
-function select(i) {
-  const t = TASKS[i];
-  document.querySelectorAll(".item").forEach(b => b.setAttribute("aria-current", b.dataset.i == i));
-  const badge = el("span", { className: "badge", textContent: t.member });
-  badge.style.setProperty("--c", color(t.member));
-  const head = el("p", { className: "head" }, badge,
-    el("span", { className: "t", textContent: label(t) }), " → ",
-    el("strong", { textContent: QUADS[t.quadrant] }));
-  const dl = el("dl");
-  [["Industry", t.industry], ["Trigger", t.trigger], ["Action", t.action], ["Human oversight", t.oversight]]
-    .filter(([, v]) => v)
-    .forEach(([k, v]) => dl.append(el("dt", { textContent: k }), el("dd", { textContent: v })));
-  strip.replaceChildren(head, dl);
-}
+<!-- ============ LOG ============ -->
+<section id="log">
+  <span class="tag analysis">Analysis · Step 3</span>
+  <h2>Collaboration log</h2>
+  <ul class="plain">
+    <li><b>What I delegated to AI.</b> I delegated the logging itself to SpendGuard on Zapier (Gmail trigger → Google Sheets row). I also used Claude as a tutor: it explained each Zapier screen to me in Burmese, suggested the agent idea, helped me check my JSON export, and drafted the text and code of this page, which I reviewed and edited.</li>
+    <li><b>What I checked, and how.</b> I checked every sheet row against its Zap history run and the original email. I also read the exported JSON (search query, Gmail labels, dates) and compared it with the send times in my Gmail.</li>
+    <li><b>One AI error I caught.</b> Claude told me my fix had also recovered the earlier missed Starbucks email. When I compared the sheet with Gmail, the earlier email was sent at 3:13 AM, but no row shows 3:13. The JSON showed that row 6 was actually a Gmail <b>draft</b> of my new email. So the earlier email stayed missed, and the new purchase was counted twice.</li>
+    <li><b>Time and cost.</b> About <b>6 hours</b> over two sessions. Cost: <b>SGD 0</b>. I added no card and used only free-plan features (one trigger, one action, free apps).</li>
+  </ul>
+</section>
 
-function place(i, animate = true) {
-  if (placed.has(i)) return;
-  placed.add(i);
-  const t = TASKS[i];
-  const btn = el("button", { type: "button", className: "item" + (animate ? " new" : "") },
-    el("span", { className: "dot" }),
-    el("span", {}, label(t), el("span", { className: "who", textContent: t.member })));
-  btn.dataset.i = i;
-  btn.style.setProperty("--c", color(t.member));
-  btn.addEventListener("click", () => select(i));
-  $(`.quad[data-q="${t.quadrant}"] .items`).append(el("li", {}, btn));
-  chips[i].setAttribute("aria-pressed", "true");
-  $("#count").textContent = `${placed.size} of ${TASKS.length} placed`;
-}
+<!-- ============ REFLECTION ============ -->
+<section id="reflection">
+  <span class="tag analysis">Analysis · Step 3</span>
+  <h2>Reflection</h2>
+  <p>SpendGuard fitted the job well: in six runs it logged every receipt email that matched its search, including a real GrabFood receipt, with no effort from me. It failed where exact keyword matching and plain copying break down: it skipped an “Invoice” and a misspelled subject, logged a Gmail draft as a second purchase, and copied a UTC time as if it were Singapore time. I would add <code>-in:drafts</code> to the search, store the date in Singapore time with a separate Amount column, and keep my Sunday check against my bank app.</p>
+</section>
 
-TASKS.forEach((t, i) => {
-  const c = el("button", { type: "button", className: "chip", textContent: label(t) });
-  c.style.setProperty("--c", color(t.member));
-  c.setAttribute("aria-pressed", "false");
-  c.setAttribute("aria-label", `${t.member}: ${label(t)}`);
-  c.addEventListener("click", () => { place(i); select(i); });
-  chips.push(c);
-  $("#showAll").before(c);
-});
-
-$("#showAll").addEventListener("click", () => {
-  TASKS.forEach((_, i) => place(i, false));
-  idle(`All ${TASKS.length} placed. Click any task to read it.`);
-  document.querySelectorAll(".item").forEach(b => b.setAttribute("aria-current", "false"));
-});
-
-$("#clear").addEventListener("click", () => {
-  placed.clear();
-  document.querySelectorAll(".items").forEach(u => u.replaceChildren());
-  chips.forEach(c => c.setAttribute("aria-pressed", "false"));
-  $("#count").textContent = `0 of ${TASKS.length} placed`;
-  idle();
-});
-
-idle();
-</script>
+<footer>Ma Ma Lay · MGMT 6110 Problem Set 5 · SMU MSc in Business AI · SpendGuard will be turned off after class on 21 Oct 2026</footer>
+</div>
 </body>
 </html>
